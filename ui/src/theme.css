@@ -1,0 +1,111 @@
+:root {
+  color-scheme: dark;
+
+  --bg: #0b0d10;
+  --n-950: #0e1115;
+  --n-900: #14181d;
+  --n-800: #1c2128;
+  --n-700: #272d36;
+  --n-600: #3a424d;
+  --n-500: #59626e;
+  --n-400: #7d8692;
+  --n-300: #a3abb5;
+  --n-200: #c9ced5;
+  --n-100: #e8eaed;
+
+  --text: var(--n-100);
+  --text-dim: var(--n-300);
+  --text-faint: var(--n-400);
+
+  --accent: #2a6fdb;
+  --accent-hi: #4d8bf0;
+  --accent-soft: rgb(42 111 219 / 0.18);
+  --ok: #2fbf71;
+  --ok-soft: rgb(47 191 113 / 0.12);
+  --warn: #f2a53a;
+  --warn-soft: rgb(242 165 58 / 0.12);
+  --danger: #e5484d;
+  --danger-soft: rgb(229 72 77 / 0.12);
+
+  --font: "Inter var", Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  --fs-xs: 13px;
+  --fs-sm: 15px;
+  --fs-md: 18px;
+  --fs-lg: 24px;
+  --fs-xl: 40px;
+  --fs-display: 112px;
+  --tracking-caps: 0.12em;
+
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --touch: 64px;
+  --nav-h: 88px;
+
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-pill: 999px;
+
+  --e-1: 0 1px 2px rgb(0 0 0 / 0.4), 0 4px 12px rgb(0 0 0 / 0.25);
+  --e-2: 0 2px 4px rgb(0 0 0 / 0.4), 0 12px 32px rgb(0 0 0 / 0.4);
+
+  /* glass | solid: set to solid on the Pi if backdrop-filter is too slow */
+  --glass: glass;
+  --glass-bg: rgb(20 24 29 / 0.55);
+  --glass-bg-solid: var(--n-900);
+  --glass-border: rgb(255 255 255 / 0.08);
+  --glass-blur: 20px;
+
+  --dur-fast: 150ms;
+  --dur: 200ms;
+  --dur-slow: 250ms;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur: 0ms;
+    --dur-slow: 0ms;
+  }
+}
+
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--e-2);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+}
+
+@container style(--glass: solid) {
+  .glass {
+    background: var(--glass-bg-solid);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: var(--glass-bg-solid);
+  }
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+.caps {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
